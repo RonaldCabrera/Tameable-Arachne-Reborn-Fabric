@@ -1,0 +1,5 @@
+Arachnes and Harpies Textures and Models (Although they were recreated):
+https://www.curseforge.com/minecraft/mc-mods/tameable-arachne
+
+Distrituted under MIT License:
+https://github.com/Reploidsham/tameable-arachne/blob/master/LICENSE

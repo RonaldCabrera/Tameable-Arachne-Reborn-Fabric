@@ -1,0 +1,67 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.harpy.idle": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": {
+						"vector": [0, 0, "math.sin(query.anim_time*150)*-5"]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"vector": [0, 0, "math.sin(query.anim_time*150)*5"]
+					}
+				}
+			}
+		},
+		"animation.harpy.walk": {
+			"animation_length": 8.25,
+			"bones": {
+				"leftLeg": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*450)*25", 0, 0]
+					}
+				},
+				"rightLeg": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*450)*-25", 0, 0]
+					}
+				}
+			}
+		},
+		"animation.harpy.sitting": {
+			"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": {
+						"vector": [-51.0307, 65.24584, -30.95311]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"vector": [-49.20404, -68.57371, 32.44165]
+					}
+				}
+			}
+		},
+		"animation.harpy.attack": {
+			"loop": true,
+			"animation_length": 0.45833,
+			"bones": {
+				"leftArm": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*400)*-120", "math.sin(query.anim_time*400)*30", 0]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*400)*-120", "math.sin(query.anim_time*400)*-30", 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

@@ -1,0 +1,13 @@
+{
+  "itemGroup.tameablearachnereborn.tameablearachnereborn": "Tameable Arachne Reborn",
+
+  "item.tameablearachnereborn.magic_candy": "Magic Candy",
+
+  "item.tameablearachnereborn.harpy_spawn_egg": "Harpy Spawn Egg",
+  "item.tameablearachnereborn.arachne_spawn_egg": "Arachne Spawn Egg",
+  "item.tameablearachnereborn.arachne_medium_spawn_egg": "Arachne Medium Spawn Egg",
+
+  "entity.tameablearachnereborn.harpy": "Harpy",
+  "entity.tameablearachnereborn.arachne": "Arachne",
+  "entity.tameablearachnereborn.arachne_medium": "Arachne Medium"
+}
