@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tameablearachnereborn",
+  "pattern": [
+    "FFF",
+    "FEF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "result": {
+    "item": "tameablearachnereborn:harpy_spawn_egg"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "tameablearachnereborn:craftable_spawn_eggs"
+    }
+  ]
+}

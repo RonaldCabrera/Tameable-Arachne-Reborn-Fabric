@@ -1,0 +1,88 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.arachne_medium.idle": {
+			"loop": true,
+			"animation_length": 2.375,
+			"bones": {
+				"head1": {
+					"position": [0, "math.sin(query.anim_time*75)*0.10", 0]
+				},
+				"rightarm0": {
+					"rotation": [0, 0, "math.sin(query.anim_time*150)*10"]
+				},
+				"leftarm0": {
+					"rotation": [0, 0, "math.sin(query.anim_time*150)*-10"]
+				},
+				"torso": {
+					"position": [0, "math.sin(query.anim_time*75)*0.10", 0]
+				}
+			}
+		},
+		"animation.arachne_medium.walk": {
+			"loop": true,
+			"animation_length": 2.375,
+			"bones": {
+				"rightarm0": {
+					"rotation": ["math.sin(query.anim_time*450)*25", 0, 0]
+				},
+				"leftarm0": {
+					"rotation": ["math.sin(query.anim_time*450)*-25", 0, 0]
+				},
+				"rightLeg4": {
+					"rotation": [0, "math.cos(query.anim_time*450)*-15", 0]
+				},
+				"rightLeg5": {
+					"rotation": [0, "math.cos(query.anim_time*450)*15", 0]
+				},
+				"leftLeg2": {
+					"rotation": [0, "math.cos(query.anim_time*450)*-15", 0]
+				},
+				"leftLeg3": {
+					"rotation": [0, "math.cos(query.anim_time*450)*15", 0]
+				},
+				"leftLeg4": {
+					"rotation": [0, "math.cos(query.anim_time*450)*-15", 0]
+				},
+				"leftLeg5": {
+					"rotation": [0, "math.cos(query.anim_time*450)*15", 0]
+				},
+				"rightLeg2": {
+					"rotation": [0, "math.cos(query.anim_time*450)*-15", 0]
+				},
+				"rightLeg3": {
+					"rotation": [0, "math.cos(query.anim_time*450)*15", 0]
+				}
+			}
+		},
+		"animation.arachne_medium.sitting": {
+			"loop": true,
+			"bones": {
+				"rightarm0": {
+					"rotation": [-40, -40, 0]
+				},
+				"leftarm0": {
+					"rotation": [-40, 40, 0]
+				}
+			}
+		},
+		"animation.arachne_medium.attack": {
+			"loop": true,
+			"animation_length": 0.45833,
+			"bones": {
+				"rightarm0": {
+					"rotation": ["math.sin(query.anim_time*400)*-100", "math.sin(query.anim_time*400)*-10", 0]
+				},
+				"leftarm0": {
+					"rotation": ["math.sin(query.anim_time*400)*-100", "math.sin(query.anim_time*400)*10", 0]
+				},
+				"rightLeg": {
+					"rotation": ["math.sin(query.anim_time*400)*-5", "math.sin(query.anim_time*400)*-5", 0]
+				},
+				"leftLeg": {
+					"rotation": ["math.sin(query.anim_time*400)*-5", "math.sin(query.anim_time*400)*5", 0]
+				}
+			}
+		}
+	}
+}

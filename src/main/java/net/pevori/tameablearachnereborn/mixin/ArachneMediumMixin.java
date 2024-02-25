@@ -2,7 +2,7 @@ package net.pevori.tameablearachnereborn.mixin;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.CaveSpiderEntity;
+import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -20,17 +20,17 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MobEntity.class)
-public abstract class ArachneMixin extends LivingEntity {
+public abstract class ArachneMediumMixin extends LivingEntity {
 
-    protected ArachneMixin(EntityType<? extends MobEntity> entityType, World world) {
+    protected ArachneMediumMixin(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Inject(method = "interactMob", at = @At("HEAD"))
     private void interactMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> info) {
-        if((Object) this instanceof CaveSpiderEntity){
+        if((Object) this instanceof SpiderEntity){
             ItemStack itemStack = player.getStackInHand(hand);
-            CaveSpiderEntity spiderEntity = ((CaveSpiderEntity)(Object)this);
+            SpiderEntity spiderEntity = ((SpiderEntity)(Object)this);
 
             if(itemStack.getItem() == ModItems.MAGIC_CANDY){
                 if (!player.getAbilities().creativeMode) {
@@ -43,7 +43,7 @@ public abstract class ArachneMixin extends LivingEntity {
         }
     }
 
-    public void spawnArachne(ArachneEntity arachneEntity, CaveSpiderEntity spiderEntity, PlayerEntity player){
+    public void spawnArachne(ArachneEntity arachneEntity, SpiderEntity spiderEntity, PlayerEntity player){
         arachneEntity.refreshPositionAndAngles(spiderEntity.getX(), spiderEntity.getY(), spiderEntity.getZ(), spiderEntity.getYaw(), spiderEntity.getPitch());
         arachneEntity.setAiDisabled(spiderEntity.isAiDisabled());
 

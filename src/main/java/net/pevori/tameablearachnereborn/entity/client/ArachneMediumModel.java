@@ -2,31 +2,30 @@ package net.pevori.tameablearachnereborn.entity.client;
 
 import net.minecraft.util.Identifier;
 import net.pevori.tameablearachnereborn.TameableArachneReborn;
-import net.pevori.tameablearachnereborn.entity.custom.HarpyEntity;
+import net.pevori.tameablearachnereborn.entity.custom.ArachneMediumEntity;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class HarpyModel extends AnimatedGeoModel<HarpyEntity> {
+public class ArachneMediumModel extends AnimatedGeoModel<ArachneMediumEntity> {
     @Override
-    public Identifier getModelLocation(HarpyEntity object) {
-        return new Identifier(TameableArachneReborn.MOD_ID, "geo/harpy.geo.json");
+    public Identifier getModelLocation(ArachneMediumEntity object) {
+        return new Identifier(TameableArachneReborn.MOD_ID, "geo/arachne_medium.geo.json");
     }
 
     @Override
-    public Identifier getTextureLocation(HarpyEntity object) {
+    public Identifier getTextureLocation(ArachneMediumEntity object) {
         return HarpyRenderer.LOCATION_BY_VARIANT.get(object.getVariant());
     }
 
     @Override
-    public Identifier getAnimationFileLocation(HarpyEntity animatable) {
-        return new Identifier(TameableArachneReborn.MOD_ID, "animations/harpy.animation.json");
+    public Identifier getAnimationFileLocation(ArachneMediumEntity animatable) {
+        return new Identifier(TameableArachneReborn.MOD_ID, "animations/arachne_medium.animation.json");
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    public void setLivingAnimations(HarpyEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+    public void setLivingAnimations(ArachneMediumEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setCustomAnimations(entity, uniqueID, customPredicate);
         IBone head = this.getAnimationProcessor().getBone("head");
         IBone face = this.getAnimationProcessor().getBone("face");

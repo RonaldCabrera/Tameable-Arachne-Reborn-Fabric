@@ -2,13 +2,14 @@ package net.pevori.tameablearachnereborn.screen;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.pevori.tameablearachnereborn.TameableArachneReborn;
 
 public class TameableArachneScreenRegistries {
     public static final Identifier TAMEABLE_ARACHNE_SCREEN = new Identifier(TameableArachneReborn.MOD_ID, "humanoid_animal_screen");
-    public static final Identifier TEXTURE = new Identifier(TameableArachneReborn.MOD_ID, "textures/gui/container/tameable_arachne.png");
     public static ScreenHandlerType<TameableArachneScreenHandler> TAMEABLE_ARACHNE_SCREEN_HANDLER;
 
     public static void registerScreenHandlers() {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tameablearachnereborn",
+  "pattern": [
+    "XDX",
+    "DAD",
+    "XDX"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "X": {
+      "item": "minecraft:paper"
+    },
+    "D": {
+      "item": "minecraft:bone_meal"
+    }
+  },
+  "result": {
+    "item": "tameablearachnereborn:magic_candy"
+  }
+}
