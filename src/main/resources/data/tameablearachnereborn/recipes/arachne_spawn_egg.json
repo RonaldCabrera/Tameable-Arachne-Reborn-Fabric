@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tameablearachnereborn",
+  "pattern": [
+    "SYS",
+    "YEY",
+    "SYS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "Y": {
+      "item": "minecraft:spider_eye"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "result": {
+    "item": "tameablearachnereborn:arachne_spawn_egg"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "tameablearachnereborn:craftable_spawn_eggs"
+    }
+  ]
+}

@@ -1,10 +1,15 @@
 package net.pevori.tameablearachnereborn.entity.custom;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -16,13 +21,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.pevori.tameablearachnereborn.config.TameableArachneRebornConfig;
-import net.pevori.tameablearachnereborn.entity.variant.HarpyVariant;
+import net.pevori.tameablearachnereborn.entity.variant.ArachneMediumVariant;
+import net.pevori.tameablearachnereborn.entity.variant.ArachneVariant;
 import net.pevori.tameablearachnereborn.item.ModItems;
-import net.pevori.tameablearachnereborn.mixin.HarpyLootEnabler;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -34,59 +40,56 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 
 import javax.annotation.Nullable;
 
-public class HarpyEntity extends TameableArachneEntity{
-
-    public HarpyEntity(EntityType<? extends TameableArachneEntity> entityType, World world) {
+public class ArachneMediumEntity extends TameableArachneEntity{
+    public ArachneMediumEntity(EntityType<? extends TameableArachneEntity> entityType, World world) {
         super(entityType, world);
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
         return TameableEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, TameableArachneRebornConfig.harpyBaseHp)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, TameableArachneRebornConfig.harpyBaseAttack)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, TameableArachneRebornConfig.arachneMediumBaseHp)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, TameableArachneRebornConfig.arachneMediumBaseAttack)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f)
-                .add(EntityAttributes.GENERIC_ARMOR, TameableArachneRebornConfig.arachneBaseDefense);
+                .add(EntityAttributes.GENERIC_ARMOR, TameableArachneRebornConfig.arachneMediumBaseDefense);
+    }
+
+    @Override
+    public void slowMovement(BlockState state, Vec3d multiplier) {
+        if (!state.isOf(Blocks.COBWEB)) {
+            super.slowMovement(state, multiplier);
+        }
+    }
+
+    @Override
+    public boolean canHaveStatusEffect(StatusEffectInstance effect) {
+        return effect.getEffectType() != StatusEffects.POISON && super.canHaveStatusEffect(effect);
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15f, 1.0f);
-    }
-
-    @Override
-    public boolean tryAttack(Entity target) {
-        super.tryAttack(target);
-
-        if(target instanceof LivingEntity){
-            if (this.random.nextInt(100) < TameableArachneRebornConfig.harpyAddDropRate)
-            {
-                ((HarpyLootEnabler)target).TameableArachneReborn$dropLoot(((LivingEntity) target).getRecentDamageSource(), true);
-            }
-        }
-
-        return true;
+        this.playSound(SoundEvents.ENTITY_SPIDER_STEP, 0.15f, 1.0f);
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.harpy.sitting", ILoopType.EDefaultLoopTypes.LOOP));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.arachne_medium.sitting", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.harpy.walk", ILoopType.EDefaultLoopTypes.LOOP));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.arachne_medium.walk", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.harpy.idle", ILoopType.EDefaultLoopTypes.LOOP));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.arachne_medium.idle", ILoopType.EDefaultLoopTypes.LOOP));
         return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event) {
         if(this.handSwinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
             event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.harpy.attack", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.arachne_medium.attack", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             this.handSwinging = false;
         }
 
@@ -120,36 +123,36 @@ public class HarpyEntity extends TameableArachneEntity{
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getStackInHand(hand);
-        Item item = itemstack.getItem();
+        ItemStack itemStack = player.getStackInHand(hand);
+        Item item = itemStack.getItem();
 
         if (item == itemForVariant && this.isOwner(player) && !player.isSneaking()) {
-            this.setVariant(HarpyVariant.nextVariant(this.getTypeVariant()));
+            this.setVariant(ArachneMediumVariant.nextVariant(this.getTypeVariant()));
             if (!player.getAbilities().creativeMode) {
-                itemstack.decrement(1);
+                itemStack.decrement(1);
             }
 
             this.setPersistent();
             return ActionResult.CONSUME;
         }
 
-        if ((itemForHealing.test(itemstack)) && isTamed() && this.getHealth() < getMaxHealth() && !player.isSneaking()) {
+        if ((itemForHealing.test(itemStack)) && isTamed() && this.getHealth() < getMaxHealth() && !player.isSneaking()) {
             if (this.world.isClient()) {
                 return ActionResult.CONSUME;
             } else {
                 if (!player.getAbilities().creativeMode) {
-                    itemstack.decrement(1);
+                    itemStack.decrement(1);
                 }
 
                 if (!this.world.isClient()) {
-                    this.eat(player, hand, itemstack);
+                    this.eat(player, hand, itemStack);
                     this.heal(10.0f);
 
                     if (this.getHealth() > getMaxHealth()) {
                         this.setHealth(getMaxHealth());
                     }
 
-                    this.playSound(this.getEatSound(itemstack), 1.0f, 1.0f);
+                    this.playSound(this.getEatSound(itemStack), 1.0f, 1.0f);
                 }
 
                 return ActionResult.SUCCESS;
@@ -160,11 +163,11 @@ public class HarpyEntity extends TameableArachneEntity{
                 return ActionResult.CONSUME;
             } else {
                 if (!player.getAbilities().creativeMode) {
-                    itemstack.decrement(1);
+                    itemStack.decrement(1);
                 }
 
                 if (!this.world.isClient()) {
-                    this.playSound(this.getEatSound(itemstack), 1.0f, 1.0f);
+                    this.playSound(this.getEatSound(itemStack), 1.0f, 1.0f);
                     super.setOwner(player);
                     this.navigation.recalculatePath();
                     this.setTarget(null);
@@ -177,25 +180,25 @@ public class HarpyEntity extends TameableArachneEntity{
             }
         }
 
-        if (itemstack.getItem() == itemForTaming) {
+        if (itemStack.getItem() == itemForTaming) {
             return ActionResult.PASS;
         }
 
         return super.interactMob(player, hand);
     }
 
-    public HarpyVariant getVariant() {
-        return HarpyVariant.byId(this.getTypeVariant() & 255);
+    public ArachneMediumVariant getVariant() {
+        return ArachneMediumVariant.byId(this.getTypeVariant() & 255);
     }
 
-    public void setVariant(HarpyVariant variant) {
+    public void setVariant(ArachneMediumVariant variant) {
         this.dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason,
                                  @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        HarpyVariant variant = Util.getRandom(HarpyVariant.values(), this.random);
+        ArachneMediumVariant variant = Util.getRandom(ArachneMediumVariant.values(), this.random);
         setVariant(variant);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
@@ -203,18 +206,18 @@ public class HarpyEntity extends TameableArachneEntity{
     @Override
     public int getHpValue(){
         int hpValue = super.getHpValue();
-        return hpValue + TameableArachneRebornConfig.harpyBaseHp;
+        return hpValue + TameableArachneRebornConfig.arachneMediumBaseHp;
     }
 
     @Override
     public int getAttackValue(){
         int attack = super.getAttackValue();
-        return attack + TameableArachneRebornConfig.harpyBaseAttack;
+        return attack + TameableArachneRebornConfig.arachneMediumBaseAttack;
     }
 
     @Override
     public int getDefenseValue(){
         int defense = super.getDefenseValue();
-        return defense + TameableArachneRebornConfig.harpyBaseDefense;
+        return defense + TameableArachneRebornConfig.arachneMediumBaseDefense;
     }
 }

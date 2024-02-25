@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "tameablearachnereborn",
   "version": "${version}",
 
   "name": "Tameable Arachne Reborn",
@@ -24,6 +24,9 @@
     ],
     "client": [
       "net.pevori.tameablearachnereborn.TameableArachneRebornClient"
+    ],
+    "modmenu": [
+      "net.pevori.queencats.config.TameableArachneRebornModMenuIntegration"
     ]
   },
   "mixins": [

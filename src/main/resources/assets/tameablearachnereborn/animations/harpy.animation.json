@@ -3,6 +3,7 @@
 	"animations": {
 		"animation.harpy.idle": {
 			"loop": true,
+			"animation_length": 2.375,
 			"bones": {
 				"leftArm": {
 					"rotation": {

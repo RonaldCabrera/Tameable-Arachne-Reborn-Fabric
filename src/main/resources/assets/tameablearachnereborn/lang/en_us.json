@@ -9,5 +9,42 @@
 
   "entity.tameablearachnereborn.harpy": "Harpy",
   "entity.tameablearachnereborn.arachne": "Arachne",
-  "entity.tameablearachnereborn.arachne_medium": "Arachne Medium"
+  "entity.tameablearachnereborn.arachne_medium": "Arachne Medium",
+
+  "tameablearachnereborn.midnightconfig.title": "Tameable Arachne Reborn",
+  "tameablearachnereborn.midnightconfig.arachneComment": "Arachne Config",
+  "tameablearachnereborn.midnightconfig.arachne_spawn_flag": "Naturally Spawn Arachne",
+  "tameablearachnereborn.midnightconfig.arachne_base_hp": "Arachne Base Health Points",
+  "tameablearachnereborn.midnightconfig.arachne_base_attack": "Arachne Base Attack Stat",
+  "tameablearachnereborn.midnightconfig.arachne_base_defense": "Arachne Base Defense Stat",
+
+  "tameablearachnereborn.midnightconfig.arachneMediumComment": "Arachne Medium Config",
+  "tameablearachnereborn.midnightconfig.arachne_medium_spawn_flag": "Naturally Spawn Arachne Medium",
+  "tameablearachnereborn.midnightconfig.arachne_medium_base_hp": "Arachne Medium Base Health Points",
+  "tameablearachnereborn.midnightconfig.arachne_medium_base_attack": "Arachne Medium Base Attack Stat",
+  "tameablearachnereborn.midnightconfig.arachne_medium_base_defense": "Arachne Medium Base Defense Stat",
+
+  "tameablearachnereborn.midnightconfig.harpyComment": "Harpy Config",
+  "tameablearachnereborn.midnightconfig.harpy_spawn_flag": "Naturally Spawn Harpy",
+  "tameablearachnereborn.midnightconfig.harpy_base_hp": "Harpy Base Health Points",
+  "tameablearachnereborn.midnightconfig.harpy_base_attack": "Harpy Base Attack Stat",
+  "tameablearachnereborn.midnightconfig.harpy_base_defense": "Harpy Base Defense Stat",
+  "tameablearachnereborn.midnightconfig.harpy_add_drop_rate": "Harpy Added Drop Rate",
+
+  "tameablearachnereborn.midnightconfig.genericComment": "Generic Config",
+  "tameablearachnereborn.midnightconfig.hp_up": "Health Points Power Up Value",
+  "tameablearachnereborn.midnightconfig.attack_up": "Attack Power Up Value",
+  "tameablearachnereborn.midnightconfig.defense_up": "Defense Power Up Value",
+  "tameablearachnereborn.midnightconfig.power_up_limit": "Power Up Limit",
+  "tameablearachnereborn.midnightconfig.name_bonus": "Name Bonus",
+  "tameablearachnereborn.midnightconfig.name_bonus_value": "Name Bonus Value",
+  "tameablearachnereborn.midnightconfig.auto_heal": "Auto Heal",
+  "tameablearachnereborn.midnightconfig.auto_heal_value": "Auto Heal Value",
+  "tameablearachnereborn.midnightconfig.auto_heal_interval": "Auto Heal Interval (in ticks)",
+  "tameablearachnereborn.midnightconfig.craftable_spawn_eggs": "Craftable Spawn Eggs",
+  "tameablearachnereborn.midnightconfig.protection_limit": "Protection Limit",
+  "tameablearachnereborn.midnightconfig.fire_protection_limit": "Fire Protection Limit",
+  "tameablearachnereborn.midnightconfig.fall_protection_limit": "Fall Protection Limit",
+  "tameablearachnereborn.midnightconfig.blast_protection_limit": "Blast Protection Limit",
+  "tameablearachnereborn.midnightconfig.projectile_protection_limit": "Projectile Protection Limit"
 }

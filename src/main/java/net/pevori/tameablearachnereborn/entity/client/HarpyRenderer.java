@@ -1,12 +1,17 @@
 package net.pevori.tameablearachnereborn.entity.client;
 
 import com.google.common.collect.Maps;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.pevori.tameablearachnereborn.TameableArachneReborn;
 import net.pevori.tameablearachnereborn.entity.custom.HarpyEntity;
 import net.pevori.tameablearachnereborn.entity.variant.HarpyVariant;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 import java.util.Map;
@@ -51,5 +56,10 @@ public class HarpyRenderer extends GeoEntityRenderer<HarpyEntity> {
     @Override
     public Identifier getTextureLocation(HarpyEntity instance) {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
+    }
+
+    @Override
+    public RenderLayer getRenderType(HarpyEntity animatable, float partialTick, MatrixStack poseStack, @Nullable VertexConsumerProvider bufferSource, @Nullable VertexConsumer buffer, int packedLight, Identifier texture) {
+        return RenderLayer.getEntityCutoutNoCull(this.getTextureLocation(animatable));
     }
 }
