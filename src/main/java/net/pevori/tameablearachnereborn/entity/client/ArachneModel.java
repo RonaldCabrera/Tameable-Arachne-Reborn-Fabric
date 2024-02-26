@@ -13,18 +13,23 @@ import java.util.Random;
 
 public class ArachneModel extends AnimatedGeoModel<ArachneEntity> {
     @Override
-    public Identifier getModelLocation(ArachneEntity object) {
+    public Identifier getModelResource(ArachneEntity object) {
         return new Identifier(TameableArachneReborn.MOD_ID, "geo/arachne.geo.json");
     }
 
     @Override
-    public Identifier getTextureLocation(ArachneEntity object) {
+    public Identifier getTextureResource(ArachneEntity object) {
         return HarpyRenderer.LOCATION_BY_VARIANT.get(object.getVariant());
     }
 
     @Override
-    public Identifier getAnimationFileLocation(ArachneEntity animatable) {
+    public Identifier getAnimationResource(ArachneEntity animatable) {
         return new Identifier(TameableArachneReborn.MOD_ID, "animations/arachne.animation.json");
+    }
+
+    @Override
+    public void setCustomAnimations(ArachneEntity animatable, int instanceId) {
+        super.setCustomAnimations(animatable, instanceId);
     }
 
     @Override

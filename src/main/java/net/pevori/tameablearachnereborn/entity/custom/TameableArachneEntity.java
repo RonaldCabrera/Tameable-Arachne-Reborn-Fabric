@@ -40,7 +40,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -224,7 +224,7 @@ public class TameableArachneEntity extends TameableEntity implements IAnimatable
                 this.setAddHp(this.getAddHp() + 1);
                 this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(this.getHpValue());
 
-                this.emitGameEvent(GameEvent.MOB_INTERACT, this.getCameraBlockPos());
+                this.emitGameEvent(GameEvent.ENTITY_INTERACT, this);
 
                 return ActionResult.SUCCESS;
             }
@@ -237,7 +237,7 @@ public class TameableArachneEntity extends TameableEntity implements IAnimatable
                 this.setAddAttack(addAttack);
                 this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(addAttack);
 
-                this.emitGameEvent(GameEvent.MOB_INTERACT, this.getCameraBlockPos());
+                this.emitGameEvent(GameEvent.ENTITY_INTERACT, this);
 
                 return ActionResult.SUCCESS;
             }
@@ -247,7 +247,7 @@ public class TameableArachneEntity extends TameableEntity implements IAnimatable
                 this.lovePlayer(player);
                 this.setAddDefense(this.getAddDefense() + 1);
 
-                this.emitGameEvent(GameEvent.MOB_INTERACT, this.getCameraBlockPos());
+                this.emitGameEvent(GameEvent.ENTITY_INTERACT, this);
 
                 return ActionResult.SUCCESS;
             }
@@ -679,18 +679,18 @@ public class TameableArachneEntity extends TameableEntity implements IAnimatable
         return getProjectileProtection() < TameableArachneRebornConfig.projectileProtectionLimit;
     }
 
-    public LiteralText getFormattedStats(NumberFormat numberFormat){
+    public Text getFormattedStats(NumberFormat numberFormat){
         float hp = this.getHealth();
         float maxHp = this.getHpValue() / 2F;
         float attack = this.getAttackValue() / 2F;
         float defense = this.getDefenseValue() / 2F;
         int powerUps = this.getAddHp() + this.getAddAttack() + this.getAddDefense();
 
-        return new LiteralText("<Stats> \n HP:" + numberFormat.format(hp) + "/" + numberFormat.format(maxHp) + " Attack:" + numberFormat.format(attack) + " Defense:" + numberFormat.format(defense) + " PowerUp:" + powerUps);
+        return Text.literal("<Stats> \n HP:" + numberFormat.format(hp) + "/" + numberFormat.format(maxHp) + " Attack:" + numberFormat.format(attack) + " Defense:" + numberFormat.format(defense) + " PowerUp:" + powerUps);
     }
 
-    public LiteralText getFormattedProtectionStats(){
-        return new LiteralText("<Protections> \n Normal:" + getProtection() + " Fire:" + getFireProtection() + " Fall:" + getFallProtection() + " Blast:" + getBlastProtection() + " Projectile:" + getProjectileProtection());
+    public Text getFormattedProtectionStats(){
+        return Text.literal("<Protections> \n Normal:" + getProtection() + " Fire:" + getFireProtection() + " Fall:" + getFallProtection() + " Blast:" + getBlastProtection() + " Projectile:" + getProjectileProtection());
     }
 
     //endregion

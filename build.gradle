@@ -25,9 +25,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.18:3.0.80'
+	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19:3.1.40'
 	include modImplementation("maven.modrinth:midnightlib:${project.midnightlib_version}")
-	modApi "com.terraformersmc:modmenu:3.2.5"
+	modApi "com.terraformersmc:modmenu:4.1.2"
 }
 
 processResources {

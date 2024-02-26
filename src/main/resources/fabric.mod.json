@@ -7,11 +7,12 @@
   "description": "This is an unofficial recreation of Tameable Arachne to the most recent minecraft versions.",
   "authors": [
     "Pevori",
-    "ReploidSham (Original Mod Creator)"
+    "ReploidSham (Original Mod Creator)",
+    "lilacx02 (Original Original Mod Creator)"
   ],
   "contact": {
     "homepage": "https://curseforge.com/minecraft/mc-mods/tameable-arachne-reborn",
-    "sources": "https://github.com/RonaldCabrera/Tameable-Arachne-Reborn-Forge"
+    "sources": "https://github.com/RonaldCabrera/Tameable-Arachne-Reborn-Fabric"
   },
 
   "license": "CC0-1.0",
@@ -34,12 +35,12 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.15.7",
     "fabric": "*",
-    "minecraft": "~1.18.2",
+    "minecraft": "~1.19.2",
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
+    "queen-cats": "Queen Cats & Dogs"
   }
 }

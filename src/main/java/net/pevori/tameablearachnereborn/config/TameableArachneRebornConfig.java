@@ -4,8 +4,7 @@ import eu.midnightdust.lib.config.MidnightConfig;
 
 public class TameableArachneRebornConfig extends MidnightConfig {
     // region Arachne
-    @Comment()
-    public static Comment arachneComment;
+    @Comment(centered = true) public static Comment arachneComment;
 
     @Entry(name = "tameablearachnereborn.midnightconfig.arachne_spawn_flag")
     public static boolean arachneSpawnFlag  = true;
@@ -22,7 +21,7 @@ public class TameableArachneRebornConfig extends MidnightConfig {
 
     //region Arachne Medium
     @Comment() public static Comment spacer1;
-    @Comment() public static Comment arachneMediumComment;
+    @Comment(centered = true) public static Comment arachneMediumComment;
 
     @Entry(name = "tameablearachnereborn.midnightconfig.arachne_medium_spawn_flag")
     public static boolean arachneMediumSpawnFlag  = true;
@@ -40,8 +39,7 @@ public class TameableArachneRebornConfig extends MidnightConfig {
     //region Harpy
 
     @Comment() public static Comment spacer2;
-    @Comment()
-    public static Comment harpyComment;
+    @Comment(centered = true) public static Comment harpyComment;
 
     @Entry(name = "tameablearachnereborn.midnightconfig.harpy_spawn_flag")
     public static boolean harpySpawnFlag  = true;
@@ -60,7 +58,7 @@ public class TameableArachneRebornConfig extends MidnightConfig {
     //endregion
 
     @Comment() public static Comment spacer3;
-    @Comment() public static Comment genericComment;
+    @Comment(centered = true) public static Comment genericComment;
 
     @Entry(name = "tameablearachnereborn.midnightconfig.hp_up", min = 0)
     public static int hpUp = 2;
@@ -92,18 +90,18 @@ public class TameableArachneRebornConfig extends MidnightConfig {
     @Entry(name = "tameablearachnereborn.midnightconfig.craftable_spawn_eggs")
     public static boolean craftableSpawnEggs  = true;
 
-    @Entry(name = "tameablearachnereborn.midnightconfig.protection_limit", min = 0)
+    @Entry(name = "tameablearachnereborn.midnightconfig.protection_limit", min = 0, max = 100, isSlider=true)
     public static int protectionLimit = 80;
 
-    @Entry(name = "tameablearachnereborn.midnightconfig.fire_protection_limit", min = 0)
+    @Entry(name = "tameablearachnereborn.midnightconfig.fire_protection_limit", min = 0, max = 100, isSlider=true)
     public static int fireProtectionLimit = 80;
 
-    @Entry(name = "tameablearachnereborn.midnightconfig.fall_protection_limit", min = 0)
+    @Entry(name = "tameablearachnereborn.midnightconfig.fall_protection_limit", min = 0, max = 100, isSlider=true)
     public static int fallProtectionLimit = 80;
 
-    @Entry(name = "tameablearachnereborn.midnightconfig.blast_protection_limit", min = 0)
+    @Entry(name = "tameablearachnereborn.midnightconfig.blast_protection_limit", min = 0, max = 100, isSlider=true)
     public static int blastProtectionLimit = 80;
 
-    @Entry(name = "tameablearachnereborn.midnightconfig.projectile_protection_limit", min = 0)
+    @Entry(name = "tameablearachnereborn.midnightconfig.projectile_protection_limit", min = 0, max = 100, isSlider=true)
     public static int projectileProtectionLimit = 80;
 }

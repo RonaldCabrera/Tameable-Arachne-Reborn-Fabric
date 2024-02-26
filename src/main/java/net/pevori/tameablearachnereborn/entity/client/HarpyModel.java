@@ -10,18 +10,23 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class HarpyModel extends AnimatedGeoModel<HarpyEntity> {
     @Override
-    public Identifier getModelLocation(HarpyEntity object) {
+    public Identifier getModelResource(HarpyEntity object) {
         return new Identifier(TameableArachneReborn.MOD_ID, "geo/harpy.geo.json");
     }
 
     @Override
-    public Identifier getTextureLocation(HarpyEntity object) {
+    public Identifier getTextureResource(HarpyEntity object) {
         return HarpyRenderer.LOCATION_BY_VARIANT.get(object.getVariant());
     }
 
     @Override
-    public Identifier getAnimationFileLocation(HarpyEntity animatable) {
+    public Identifier getAnimationResource(HarpyEntity animatable) {
         return new Identifier(TameableArachneReborn.MOD_ID, "animations/harpy.animation.json");
+    }
+
+    @Override
+    public void setCustomAnimations(HarpyEntity animatable, int instanceId) {
+        super.setCustomAnimations(animatable, instanceId);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })

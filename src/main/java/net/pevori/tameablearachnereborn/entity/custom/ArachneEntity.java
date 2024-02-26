@@ -17,12 +17,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
@@ -32,7 +29,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 import net.pevori.tameablearachnereborn.config.TameableArachneRebornConfig;
 import net.pevori.tameablearachnereborn.entity.variant.ArachneVariant;
 import net.pevori.tameablearachnereborn.item.ModItems;
@@ -46,9 +42,6 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 
 import javax.annotation.Nullable;
-import java.text.NumberFormat;
-import java.util.Map;
-import java.util.Random;
 
 public class ArachneEntity extends TameableArachneEntity{
     public ArachneEntity(EntityType<? extends TameableEntity> entityType, World world) {
